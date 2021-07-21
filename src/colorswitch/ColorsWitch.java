@@ -2,15 +2,26 @@ package colorswitch;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
+import javax.sound.midi.SysexMessage;
 import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * Classe principale. Définit la vue.
@@ -21,6 +32,7 @@ public class ColorsWitch extends Application {
 
     private Controller controller;
     private GraphicsContext context;
+    private int tab = 0;
 
     public static void main(String[] args) {
         launch(args);
@@ -28,6 +40,42 @@ public class ColorsWitch extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
+        //Menu
+        Label label = new Label("COLORWITCH");
+        label.setTextFill(Color.WHITE);
+        label.setFont((Font.font("Helvetica", FontWeight.BOLD, FontPosture.REGULAR,30)));
+        Button startButton = new Button("Start game");
+
+        VBox layout1 = new VBox(20);
+        layout1.setAlignment(Pos.CENTER);
+        layout1.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
+
+        //Level display
+        //todo: optimize this
+        HBox levelChoices = new HBox(10);
+        Label level1 = new Label("1");
+        Label level2 = new Label("2");
+        Label level3 = new Label("3");
+        Label level4 = new Label("4");
+        level1.setTextFill(Color.WHITE);
+        level2.setTextFill(Color.WHITE);
+        level3.setTextFill(Color.WHITE);
+        level4.setTextFill(Color.WHITE);
+
+        levelChoices.getChildren().addAll(level1,level2,level3,level4);
+        levelChoices.setAlignment(Pos.CENTER);
+        layout1.getChildren().addAll(label,levelChoices,startButton);
+        Scene scene1 = new Scene(layout1,WIDTH,HEIGHT);
+
+        //todo: level selection -> Currently not working
+        //onclick -> Goes to x level
+        level1.setOnMouseClicked(e -> new Game(WIDTH,HEIGHT,1));
+        level2.setOnMouseClicked(e -> new Game(WIDTH,HEIGHT,2));
+        level3.setOnMouseClicked(e -> new Game(WIDTH,HEIGHT,3));
+        level4.setOnMouseClicked(e -> new Game(WIDTH,HEIGHT,4));
+
+        // Gameview - Scene2
         controller = new Controller();
 
         Canvas canvas = new Canvas(WIDTH, HEIGHT);
@@ -37,6 +85,7 @@ public class ColorsWitch extends Application {
 
         AnimationTimer timer = new AnimationTimer() {
             private long lastTime = System.nanoTime();
+
 
             @Override
             public void handle(long now) {
@@ -56,19 +105,29 @@ public class ColorsWitch extends Application {
         };
         timer.start();
 
-        Scene scene = new Scene(root, WIDTH, HEIGHT);
+        Scene scene2 = new Scene(root, WIDTH, HEIGHT);
 
-        scene.setOnKeyPressed((event) -> {
+        scene2.setOnKeyPressed((event) -> {
             if (event.getCode() == KeyCode.SPACE) {
                 controller.spaceTyped();
             }
             if (event.getCode() == KeyCode.TAB){
-                controller.tabTyped();
+                if (event.getCode() == KeyCode.TAB && tab == 1){
+                    controller.tabTypedTwo();
+                    tab = 0;
+                } else{
+                    tab = 1;
+                    controller.tabTyped();
+                }
             }
         });
 
+        //Start Game
+        startButton.setOnAction(e-> primaryStage.setScene(scene2));
+
+
         primaryStage.setTitle("Colors Witch");
-        primaryStage.setScene(scene);
+        primaryStage.setScene(scene1);
         primaryStage.setResizable(false);
         primaryStage.show();
     }

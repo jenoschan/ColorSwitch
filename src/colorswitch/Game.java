@@ -7,6 +7,7 @@ public class Game {
 
     private Level level;
     private Player player;
+    private boolean status = false;
 
     /**
      * Dimensions de l'écran
@@ -38,6 +39,12 @@ public class Game {
                 break;
             case 2:
                 level = new Level2(screenWidth, screenHeight);
+                break;
+            case 3:
+                level = new Level3(screenWidth, screenHeight);
+                break;
+            case 4:
+                level = new Level4(screenWidth, screenHeight);
                 break;
             default:
                 throw new IllegalArgumentException("Niveau inconnu");
@@ -89,10 +96,6 @@ public class Game {
         player.jump();
     }
 
-    public void invinsible(){
-        player.jump();
-    }
-
     public void loose() {
         System.out.println("You loose... Too bad !");
         this.gameOver = true;
@@ -104,9 +107,17 @@ public class Game {
         this.gameOver = true;
     }
 
-    public void notOver(){
-        System.out.println("You're invinsible!");
+    public void ok(){
+        this.hasWon = false;
         this.gameOver = false;
+    }
+
+    public boolean invincible(){
+        return status;
+    }
+
+    public void setInvincible(boolean data){
+        this.status = data;
     }
 
     /**
@@ -127,7 +138,4 @@ public class Game {
         return gameOver;
     }
 
-    public boolean gameNotOver(){
-        return gameOver;
-    }
 }

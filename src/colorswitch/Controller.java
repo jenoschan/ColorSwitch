@@ -9,6 +9,7 @@ public class Controller {
 
     private Game game;
     private int level = 1;
+    private int count = 0;
 
     public Controller() {
         this.game = new Game(ColorsWitch.WIDTH, ColorsWitch.HEIGHT, level);
@@ -46,6 +47,11 @@ public class Controller {
     }
 
     public void tabTyped() {
-        this.game.notOver();
+        System.out.println("You're invincible!");
+        this.game.setInvincible(true);
+    }
+    public void tabTypedTwo() {
+        this.game.setInvincible(false);
+        System.out.println("You're not longer invincible!");
     }
 }
