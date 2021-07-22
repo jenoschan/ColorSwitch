@@ -1,5 +1,13 @@
 package colorswitch;
 
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.Window;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -97,12 +105,32 @@ public class Game {
     }
 
     public void loose() {
-        System.out.println("You loose... Too bad !");
+        final Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        Window primaryStage = null;
+        dialog.initOwner(primaryStage);
+        VBox dialogVbox = new VBox(20);
+        dialogVbox.setAlignment(Pos.CENTER);
+        dialogVbox.getChildren().add(new Text("You loose!"));
+        Scene dialogScene = new Scene(dialogVbox, 200, 100);
+        dialog.setScene(dialogScene);
+        dialog.show();
+//        System.out.println("You loose... Too bad !");
         this.gameOver = true;
     }
 
     public void win() {
-        System.out.println("You win !");
+        final Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        Window primaryStage = null;
+        dialog.initOwner(primaryStage);
+        VBox dialogVbox = new VBox(20);
+        dialogVbox.setAlignment(Pos.CENTER);
+        dialogVbox.getChildren().add(new Text("You win!"));
+        Scene dialogScene = new Scene(dialogVbox, 100, 25);
+        dialog.setScene(dialogScene);
+        dialog.show();
+//        System.out.println("You win !");
         this.hasWon = true;
         this.gameOver = true;
     }

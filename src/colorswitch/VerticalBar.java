@@ -1,9 +1,13 @@
 package colorswitch;
 
 import javafx.animation.*;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.effect.ColorAdjust;
 import javafx.util.Duration;
 
 import java.awt.*;
+import java.security.Key;
+import java.sql.Time;
 
 /**
  * Obstacle 2: Vertical Bar : un Rectangle qui bouge de gauche à droite.
@@ -12,14 +16,18 @@ public class VerticalBar extends Obstacle {
 
     private double width;
     private double height;
+    private double xPos;
+    private double yPos;
     private double vitesse = 90 * 1e-9;
-    private double timeSinceMove = 0;
-
+    private double timeSinceColorChange =0;
+    
     public VerticalBar(double x, double y, double longueur, double hauteur) {
         super(x, y);
 
         this.width = longueur;
         this.height = hauteur;
+        this.xPos = x;
+        this.yPos = y;
         this.renderer = new VerticalRenderer(this);
 
         this.color = (int) (Math.random() * 4);
@@ -38,8 +46,12 @@ public class VerticalBar extends Obstacle {
     @Override
     public void tick(double dt) {
         //todo updates x values
-
-
+//        timeSinceColorChange += dt;
+//
+//        if (timeSinceColorChange > 2) {
+//            xPos += dt *vitesse;
+//            timeSinceColorChange = 0;
+//        }
     }
 
     public int getColor() {

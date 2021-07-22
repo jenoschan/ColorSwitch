@@ -1,5 +1,12 @@
 package colorswitch;
 
+import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.Window;
+
 import java.util.List;
 
 /**
@@ -9,7 +16,6 @@ public class Controller {
 
     private Game game;
     private int level = 1;
-    private int count = 0;
 
     public Controller() {
         this.game = new Game(ColorsWitch.WIDTH, ColorsWitch.HEIGHT, level);

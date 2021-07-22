@@ -1,6 +1,12 @@
 package colorswitch;
 
+
+import javafx.animation.*;
+import javafx.scene.Node;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.shape.MoveTo;
+import javafx.scene.shape.Path;
+import javafx.util.Duration;
 
 /**
  * Fait le rendu d'un Square en dessinant un carré coloré sur l'écran.
@@ -21,9 +27,11 @@ public class VerticalRenderer extends Renderer {
         context.setFill(Renderer.convertColor(vBar.getColor()));
 
         context.fillRect(
-                vBar.getX() - vBar.getWidth() / 3,
-                canvasY - vBar.getHeight() / 3,
-                vBar.getWidth(),
-                vBar.getHeight());
+                vBar.getX() - vBar.getWidth() / 4,
+                canvasY - vBar.getHeight(),
+                vBar.getWidth() / 2,
+                vBar.getHeight() / 2);
+
     }
+
 }

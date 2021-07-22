@@ -27,8 +27,11 @@ public class Level1 extends Level {
         Potion potion1 = new Potion(x, 1.15 * screenHeight);
         Potion potion2 = new Potion(x, 2.6 * screenHeight);
 
+        Shield shield = new Shield(x, 1* screenHeight);
+
         items.add(potion1);
         items.add(potion2);
+        items.add(shield);
 
         victoryMushroom = new Mushroom(screenWidth / 2, 6 * screenHeight);
     }
