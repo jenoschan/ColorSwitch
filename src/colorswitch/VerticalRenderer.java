@@ -21,9 +21,9 @@ public class VerticalRenderer extends Renderer {
         context.setFill(Renderer.convertColor(vBar.getColor()));
 
         context.fillRect(
-                vBar.getX() - vBar.getWidth() / 2,
-                canvasY - vBar.getWidth() / 2,
+                vBar.getX() - vBar.getWidth() / 3,
+                canvasY - vBar.getHeight() / 3,
                 vBar.getWidth(),
-                vBar.getWidth());
+                vBar.getHeight());
     }
 }

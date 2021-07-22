@@ -28,4 +28,5 @@ public abstract class Obstacle extends LevelElement {
             game.loose();
         }
     }
+
 }

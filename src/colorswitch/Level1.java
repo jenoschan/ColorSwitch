@@ -1,5 +1,8 @@
 package colorswitch;
 
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+
 public class Level1 extends Level {
 
     public Level1(double screenWidth, double screenHeight) {
@@ -12,7 +15,7 @@ public class Level1 extends Level {
         Square obstacle2 = new Square(x, 1.5 * screenHeight, 60);
         Square obstacle3 = new Square(x, 2.0 * screenHeight, 150);
         Square obstacle4 = new Square(x, 3 * screenHeight, 200);
-        VerticalBar obstacle5 = new VerticalBar(x, 0.5 * screenHeight, 200);
+        VerticalBar obstacle5 = new VerticalBar(x, 4 * screenHeight, 40, 100);
 
         obstacles.add(obstacle1);
         obstacles.add(obstacle2);
@@ -27,6 +30,6 @@ public class Level1 extends Level {
         items.add(potion1);
         items.add(potion2);
 
-        victoryMushroom = new Mushroom(screenWidth / 2, 3.5 * screenHeight);
+        victoryMushroom = new Mushroom(screenWidth / 2, 6 * screenHeight);
     }
 }
