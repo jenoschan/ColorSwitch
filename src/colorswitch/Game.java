@@ -112,7 +112,7 @@ public class Game {
         VBox dialogVbox = new VBox(20);
         dialogVbox.setAlignment(Pos.CENTER);
         dialogVbox.getChildren().add(new Text("You loose!"));
-        Scene dialogScene = new Scene(dialogVbox, 200, 100);
+        Scene dialogScene = new Scene(dialogVbox, 100, 25);
         dialog.setScene(dialogScene);
         dialog.show();
 //        System.out.println("You loose... Too bad !");
