@@ -1,5 +1,10 @@
 package colorswitch;
 
+import javafx.animation.FadeTransition;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
+
 /**
  * Item : Shield.
  *
@@ -34,7 +39,26 @@ public class Shield extends Item {
     public void handleCollision(Player player, Game game) {
         used = true;
         this.renderer = new ImageRenderer("shield", this);
-        //todo make invincible for 3s.
+
+        //make witch invincible for 3 seconds
+        game.setInvincible(true);
+        System.out.println("you have a shield!");
+        new java.util.Timer().schedule(
+                new java.util.TimerTask() {
+                    @Override
+                    public void run() {
+                        game.setInvincible(false);
+                        used = false;
+                        System.out.println("No more shield!");
+                    }
+                },
+                3000
+        );
+
+    }
+
+    public boolean isUsed() {
+        return used;
     }
 
     @Override

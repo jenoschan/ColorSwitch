@@ -16,18 +16,13 @@ public class VerticalBar extends Obstacle {
 
     private double width;
     private double height;
-    private double xPos;
-    private double yPos;
-    private double vitesse = 90 * 1e-9;
-    private double timeSinceColorChange =0;
+    private double timeSinceMove =0;
     
     public VerticalBar(double x, double y, double longueur, double hauteur) {
         super(x, y);
 
         this.width = longueur;
         this.height = hauteur;
-        this.xPos = x;
-        this.yPos = y;
         this.renderer = new VerticalRenderer(this);
 
         this.color = (int) (Math.random() * 4);
@@ -45,13 +40,14 @@ public class VerticalBar extends Obstacle {
 
     @Override
     public void tick(double dt) {
-        //todo updates x values
-//        timeSinceColorChange += dt;
-//
-//        if (timeSinceColorChange > 2) {
-//            xPos += dt *vitesse;
-//            timeSinceColorChange = 0;
-//        }
+        //todo make VerticalBar go left and right
+
+        timeSinceMove += dt;
+
+        if (timeSinceMove > 2) {
+            //Make it move here?
+            timeSinceMove = 0;
+        }
     }
 
     public int getColor() {

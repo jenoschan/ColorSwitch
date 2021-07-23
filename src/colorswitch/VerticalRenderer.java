@@ -9,7 +9,7 @@ import javafx.scene.shape.Path;
 import javafx.util.Duration;
 
 /**
- * Fait le rendu d'un Square en dessinant un carré coloré sur l'écran.
+ * Fait le rendu d'une barre vertical en dessinant un rectangle coloré sur l'écran qui bouge .
  */
 public class VerticalRenderer extends Renderer {
 

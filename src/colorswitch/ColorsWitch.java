@@ -17,6 +17,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import javax.sound.midi.SysexMessage;
@@ -124,7 +125,6 @@ public class ColorsWitch extends Application {
 
         //Start Game
         startButton.setOnAction(e-> primaryStage.setScene(scene2));
-
 
         primaryStage.setTitle("Colors Witch");
         primaryStage.setScene(scene1);
