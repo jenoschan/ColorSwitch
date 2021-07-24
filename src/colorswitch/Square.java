@@ -44,9 +44,9 @@ public class Square extends Obstacle {
     @Override
     public boolean intersects(Player player) {
         return this.color != player.getColor()
-                && player.getX() + player.getRadius()< this.getX() + this.getWidth() / 2
-                && player.getX() + player.getRadius()> this.getX() - this.getWidth() / 2
-                && player.getY() + player.getRadius()< this.getY() + this.getHeight() / 2
-                && player.getY() + player.getRadius()> this.getY() - this.getHeight() / 2;
+                && player.getX() + player.getRadius() < this.getX() + this.getWidth() / 2
+                && player.getX() + player.getRadius() > this.getX() - this.getWidth() / 2
+                && player.getY() + player.getRadius() < this.getY() + this.getHeight() / 2
+                && player.getY() + player.getRadius() > this.getY() - this.getHeight() / 2;
     }
 }
