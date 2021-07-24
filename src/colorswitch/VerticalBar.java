@@ -42,12 +42,14 @@ public class VerticalBar extends Obstacle {
     public void tick(double dt) {
         //todo make VerticalBar go left and right
 
-        timeSinceMove += dt;
+//        timeSinceMove += dt;
+//
+//        if (timeSinceMove > 2) {
+//            //Make it move here?
+//            timeSinceMove = 0;
+//        }
 
-        if (timeSinceMove > 2) {
-            //Make it move here?
-            timeSinceMove = 0;
-        }
+
     }
 
     public int getColor() {
@@ -57,9 +59,9 @@ public class VerticalBar extends Obstacle {
     @Override
     public boolean intersects(Player player) {
         return this.color != player.getColor()
-                && player.getX() < this.getX() + this.getWidth() / 2
-                && player.getX() > this.getX() - this.getWidth() / 2
-                && player.getY() < this.getY() + this.getHeight() / 2
-                && player.getY() > this.getY() - this.getHeight() / 2;
+                && player.getX() + player.getRadius()< this.getX() + this.getWidth() / 2
+                && player.getX() + player.getRadius()> this.getX() - this.getWidth() / 2
+                && player.getY() + player.getRadius()< this.getY() + this.getHeight() / 2
+                && player.getY() + player.getRadius()> this.getY() - this.getHeight() / 2;
     }
 }

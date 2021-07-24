@@ -12,7 +12,7 @@ public class RotatingCircle extends Obstacle {
         super(x, y);
 
         this.width = width;
-        this.renderer = new GrowingRenderer(this);
+        this.renderer = new RotatingRenderer(this);
 
         this.color = (int) (Math.random() * 4);
     }
@@ -46,9 +46,9 @@ public class RotatingCircle extends Obstacle {
     @Override
     public boolean intersects(Player player) {
         return this.color != player.getColor()
-                && player.getX() < this.getX() + this.getWidth() / 2
-                && player.getX() > this.getX() - this.getWidth() / 2
-                && player.getY() < this.getY() + this.getHeight() / 2
-                && player.getY() > this.getY() - this.getHeight() / 2;
+                && player.getX() + player.getRadius() < this.getX() + this.getWidth() / 2
+                && player.getX() + player.getRadius() > this.getX() - this.getWidth() / 2
+                && player.getY() + player.getRadius() < this.getY() + this.getHeight() / 2
+                && player.getY() + player.getRadius() > this.getY() - this.getHeight() / 2;
     }
 }

@@ -30,9 +30,10 @@ import java.util.stream.Stream;
 public class ColorsWitch extends Application {
 
     public static final double WIDTH = 320, HEIGHT = 480;
+    private static GraphicsContext context;
 
     private Controller controller;
-    private GraphicsContext context;
+//    private GraphicsContext context;
     private int tab = 0;
 
     public static void main(String[] args) {
@@ -130,5 +131,9 @@ public class ColorsWitch extends Application {
         primaryStage.setScene(scene1);
         primaryStage.setResizable(false);
         primaryStage.show();
+    }
+
+    public static GraphicsContext getContext() {
+        return context;
     }
 }

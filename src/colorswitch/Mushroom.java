@@ -10,7 +10,8 @@ public class Mushroom extends Item {
     public Mushroom(double x, double y) {
         super(x, y);
 
-        this.renderer = new ImageRenderer("mushroom", this);
+//        this.renderer = new AnimationRenderer("mushroom_animation", 26,26 * 1e-9, this);
+        this.renderer = new ImageRenderer("mushroom",this);
     }
 
     @Override
@@ -35,9 +36,9 @@ public class Mushroom extends Item {
 
     @Override
     public boolean intersects(Player player) {
-        return player.getX() < this.getX() + this.getWidth() / 2
-                && player.getX() > this.getX() - this.getWidth() / 2
-                && player.getY() < this.getY() + this.getHeight() / 2
-                && player.getY() > this.getY() - this.getHeight() / 2;
+        return player.getX() + player.getRadius() < this.getX() + this.getWidth() / 2
+                && player.getX() + player.getRadius() > this.getX() - this.getWidth() / 2
+                && player.getY() + player.getRadius() < this.getY() + this.getHeight() / 2
+                && player.getY() + player.getRadius() > this.getY() - this.getHeight() / 2;
     }
 }

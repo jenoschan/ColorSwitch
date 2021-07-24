@@ -27,12 +27,12 @@ public class Shield extends Item {
 
     @Override
     public double getWidth() {
-        return 48;
+        return 32;
     }
 
     @Override
     public double getHeight() {
-        return 48;
+        return 32;
     }
 
     @Override
@@ -64,9 +64,9 @@ public class Shield extends Item {
     @Override
     public boolean intersects(Player player) {
         return !used
-                && player.getX() < this.getX() + this.getWidth() / 2
-                && player.getX() > this.getX() - this.getWidth() / 2
-                && player.getY() < this.getY() + this.getHeight() / 2
-                && player.getY() > this.getY() - this.getHeight() / 2;
+                && player.getX() + player.getRadius() < this.getX() + this.getWidth() / 2
+                && player.getX() + player.getRadius() > this.getX() - this.getWidth() / 2
+                && player.getY() + player.getRadius() < this.getY() + this.getHeight() / 2
+                && player.getY() + player.getRadius() > this.getY() - this.getHeight() / 2;
     }
 }
