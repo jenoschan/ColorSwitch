@@ -23,12 +23,17 @@ public class AnimationRenderer extends Renderer {
     private String prefix;
     private int number;
     private double framerate;
+    private int index;
 
     public AnimationRenderer(String prefix, int number, double framerate, Entity entity) {
         this.prefix = prefix;
         this.number = number;
         this.framerate = framerate;
         this.entity = entity;
+
+        for (int i = 1; i <= number; i++){
+            index = i;
+        }
     }
 
     @Override
@@ -37,35 +42,10 @@ public class AnimationRenderer extends Renderer {
         double x = entity.getX();
         double y = Renderer.computeScreenY(level, entity.getY());
 
-//      context.drawImage(img, x - entity.getWidth() / 2, y - entity.getHeight() / 2, entity.getWidth(), entity.getHeight());
 
+        //not working only shows the 26th pic
         Image[] frames = new Image[]{
-                new javafx.scene.image.Image("/mushroom_animation1.png"),
-                new javafx.scene.image.Image("/mushroom_animation2.png"),
-                new javafx.scene.image.Image("/mushroom_animation3.png"),
-                new javafx.scene.image.Image("/mushroom_animation4.png"),
-                new javafx.scene.image.Image("/mushroom_animation5.png"),
-                new javafx.scene.image.Image("/mushroom_animation6.png"),
-                new javafx.scene.image.Image("/mushroom_animation7.png"),
-                new javafx.scene.image.Image("/mushroom_animation8.png"),
-                new javafx.scene.image.Image("/mushroom_animation9.png"),
-                new javafx.scene.image.Image("/mushroom_animation10.png"),
-                new javafx.scene.image.Image("/mushroom_animation11.png"),
-                new javafx.scene.image.Image("/mushroom_animation12.png"),
-                new javafx.scene.image.Image("/mushroom_animation13.png"),
-                new javafx.scene.image.Image("/mushroom_animation14.png"),
-                new javafx.scene.image.Image("/mushroom_animation15.png"),
-                new javafx.scene.image.Image("/mushroom_animation16.png"),
-                new javafx.scene.image.Image("/mushroom_animation17.png"),
-                new javafx.scene.image.Image("/mushroom_animation18.png"),
-                new javafx.scene.image.Image("/mushroom_animation19.png"),
-                new javafx.scene.image.Image("/mushroom_animation20.png"),
-                new javafx.scene.image.Image("/mushroom_animation21.png"),
-                new javafx.scene.image.Image("/mushroom_animation22.png"),
-                new javafx.scene.image.Image("/mushroom_animation23.png"),
-                new javafx.scene.image.Image("/mushroom_animation24.png"),
-                new javafx.scene.image.Image("/mushroom_animation25.png"),
-                new javafx.scene.image.Image("/mushroom_animation26.png"),
+                new javafx.scene.image.Image("/"+ prefix + index + ".png"),
         };
 
         //Framerate is kinda buggy for some reason
