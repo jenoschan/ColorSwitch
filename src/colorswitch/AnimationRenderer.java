@@ -14,6 +14,7 @@ import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import javafx.scene.image.Image;
 
+import javax.swing.*;
 import java.sql.Time;
 
 public class AnimationRenderer extends Renderer {
@@ -23,17 +24,13 @@ public class AnimationRenderer extends Renderer {
     private String prefix;
     private int number;
     private double framerate;
-    private int index;
+    private String source;
 
     public AnimationRenderer(String prefix, int number, double framerate, Entity entity) {
         this.prefix = prefix;
         this.number = number;
         this.framerate = framerate;
         this.entity = entity;
-
-        for (int i = 1; i <= number; i++){
-            index = i;
-        }
     }
 
     @Override
@@ -42,10 +39,12 @@ public class AnimationRenderer extends Renderer {
         double x = entity.getX();
         double y = Renderer.computeScreenY(level, entity.getY());
 
+        for (int i = 1; i <= number; i++){
+           source = "/"+ prefix + String.valueOf(i) + ".png";
+        }
 
-        //not working only shows the 26th pic
         Image[] frames = new Image[]{
-                new javafx.scene.image.Image("/"+ prefix + index + ".png"),
+                new javafx.scene.image.Image(source),
         };
 
         //Framerate is kinda buggy for some reason
@@ -67,8 +66,12 @@ public class AnimationRenderer extends Renderer {
 
                 Image img = frames[frame % frames.length];
 
-                context.clearRect(x - entity.getWidth()/2, y - entity.getHeight()/2, entity.getWidth(), entity.getHeight());
-                context.drawImage(img, x - entity.getWidth()/2 , y - entity.getHeight()/2, entity.getWidth(), entity.getHeight());
+                //clear drawing
+                context.fillRect(x - entity.getWidth()/2, y - entity.getHeight()/2, entity.getWidth(), entity.getHeight());
+                context.setFill(Color.BLACK);
+
+                //new drawing
+                context.drawImage(img, x - entity.getWidth()/2 , y - entity.getHeight()/2);
 
             }
         };
