@@ -5,13 +5,15 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.scene.Group;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.effect.BlendMode;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
+import javafx.scene.image.Image;
 
-import java.awt.*;
 import java.sql.Time;
 
 public class AnimationRenderer extends Renderer {
@@ -35,9 +37,9 @@ public class AnimationRenderer extends Renderer {
         double x = entity.getX();
         double y = Renderer.computeScreenY(level, entity.getY());
 
-//        context.drawImage(img, x - entity.getWidth() / 2, y - entity.getHeight() / 2, entity.getWidth(), entity.getHeight());
+//      context.drawImage(img, x - entity.getWidth() / 2, y - entity.getHeight() / 2, entity.getWidth(), entity.getHeight());
 
-        javafx.scene.image.Image[] frames = new javafx.scene.image.Image[]{
+        Image[] frames = new Image[]{
                 new javafx.scene.image.Image("/mushroom_animation1.png"),
                 new javafx.scene.image.Image("/mushroom_animation2.png"),
                 new javafx.scene.image.Image("/mushroom_animation3.png"),
@@ -64,10 +66,9 @@ public class AnimationRenderer extends Renderer {
                 new javafx.scene.image.Image("/mushroom_animation24.png"),
                 new javafx.scene.image.Image("/mushroom_animation25.png"),
                 new javafx.scene.image.Image("/mushroom_animation26.png"),
-
-
         };
 
+        //Framerate is kinda buggy for some reason
         double frameRate = number * framerate; // 26 fps = 26*10^-9 images par nanoseconde
         AnimationTimer timer = new AnimationTimer() {
             private long startTime = 0;
@@ -84,10 +85,11 @@ public class AnimationRenderer extends Renderer {
                 double deltaTime = now - startTime;
                 int frame = (int) (deltaTime * frameRate);
 
-                javafx.scene.image.Image img = frames[frame % number];
+                Image img = frames[frame % frames.length];
 
-                context.clearRect(x - entity.getWidth() / 2, y - entity.getHeight() / 2, entity.getWidth(), entity.getHeight());
-                context.drawImage(img, x - entity.getWidth() / 2, y - entity.getHeight() / 2, entity.getWidth(), entity.getHeight());
+                context.clearRect(x - entity.getWidth()/2, y - entity.getHeight()/2, entity.getWidth(), entity.getHeight());
+                context.drawImage(img, x - entity.getWidth()/2 , y - entity.getHeight()/2, entity.getWidth(), entity.getHeight());
+
             }
         };
         timer.start();

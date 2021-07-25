@@ -84,6 +84,7 @@ public class ColorsWitch extends Application {
         Pane root = new Pane(canvas);
 
         context = canvas.getGraphicsContext2D();
+        context.setFill(Color.BLACK);
 
         AnimationTimer timer = new AnimationTimer() {
             private long lastTime = System.nanoTime();
