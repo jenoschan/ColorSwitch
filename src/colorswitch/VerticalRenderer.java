@@ -40,6 +40,9 @@ public class VerticalRenderer extends Renderer {
    }
 }
 
+
+// also tried the code below but it doesn't work aha
+
 //public class VerticalRenderer extends Renderer {
 //
 //    private Entity entity;
