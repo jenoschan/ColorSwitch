@@ -31,6 +31,10 @@ public class AnimationRenderer extends Renderer {
         this.number = number;
         this.framerate = framerate;
         this.entity = entity;
+
+        for (int i = 1; i <= number; i++){
+            source = "/"+ prefix + String.valueOf(i) + ".png";
+        }
     }
 
     @Override
@@ -39,12 +43,15 @@ public class AnimationRenderer extends Renderer {
         double x = entity.getX();
         double y = Renderer.computeScreenY(level, entity.getY());
 
-        for (int i = 1; i <= number; i++){
-           source = "/"+ prefix + String.valueOf(i) + ".png";
-        }
+        Image[] frames = new Image[number];
 
-        Image[] frames = new Image[]{
-                new javafx.scene.image.Image(source),
+        for (int i = 1; i <= number; i++){
+            source = "/"+ prefix + String.valueOf(i) + ".png";
+        }
+        String fileLocation = source;
+
+        for (int i = 0; i < number; i++) {
+                frames[i] = new Image(fileLocation);
         };
 
         //Framerate is kinda buggy for some reason
@@ -69,6 +76,8 @@ public class AnimationRenderer extends Renderer {
                 //clear drawing
                 context.fillRect(x - entity.getWidth()/2, y - entity.getHeight()/2, entity.getWidth(), entity.getHeight());
                 context.setFill(Color.BLACK);
+
+//                context.clearRect(x - entity.getWidth()/2 , y - entity.getHeight()/2, img.getWidth(), img.getHeight());
 
                 //new drawing
                 context.drawImage(img, x - entity.getWidth()/2 , y - entity.getHeight()/2);
