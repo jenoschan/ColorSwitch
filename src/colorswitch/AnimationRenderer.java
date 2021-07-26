@@ -32,9 +32,6 @@ public class AnimationRenderer extends Renderer {
         this.framerate = framerate;
         this.entity = entity;
 
-        for (int i = 1; i <= number; i++){
-            source = "/"+ prefix + String.valueOf(i) + ".png";
-        }
     }
 
     @Override
@@ -42,6 +39,8 @@ public class AnimationRenderer extends Renderer {
 
         double x = entity.getX();
         double y = Renderer.computeScreenY(level, entity.getY());
+
+        //todo Animation not working rip
 
         Image[] frames = new Image[number];
 
@@ -54,7 +53,6 @@ public class AnimationRenderer extends Renderer {
                 frames[i] = new Image(fileLocation);
         };
 
-        //Framerate is kinda buggy for some reason
         double frameRate = number * framerate; // 26 fps = 26*10^-9 images par nanoseconde
         AnimationTimer timer = new AnimationTimer() {
             private long startTime = 0;
@@ -73,11 +71,11 @@ public class AnimationRenderer extends Renderer {
 
                 Image img = frames[frame % frames.length];
 
-                //clear drawing
+                //clear drawing - todo rework this lol
                 context.fillRect(x - entity.getWidth()/2, y - entity.getHeight()/2, entity.getWidth(), entity.getHeight());
                 context.setFill(Color.BLACK);
 
-//                context.clearRect(x - entity.getWidth()/2 , y - entity.getHeight()/2, img.getWidth(), img.getHeight());
+//              context.clearRect(x - entity.getWidth()/2 , y - entity.getHeight()/2, img.getWidth(), img.getHeight());
 
                 //new drawing
                 context.drawImage(img, x - entity.getWidth()/2 , y - entity.getHeight()/2);
