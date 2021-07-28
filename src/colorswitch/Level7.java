@@ -1,22 +1,21 @@
 package colorswitch;
 
-public class Level6 extends Level{
+public class Level7 extends Level{
 
-    public Level6(double screenWidth, double screenHeight) {
+    public Level7(double screenWidth, double screenHeight) {
         super(screenWidth, screenHeight);
 
         double x = screenWidth / 2;
 
         // Création des obstacles
         Square obstacle1 = new Square(x, 10 * screenHeight, 10);
-        Square obstacle2 = new Square(x, 10 * screenHeight, 20);
-        Square obstacle3 = new Square(x, 10 * screenHeight, 30);
-        Square obstacle4 = new Square(x, 10 * screenHeight, 40);
-        VerticalBar obstacle5 = new VerticalBar(x, 5 * screenHeight, 10, 60);
-        Square obstacle6 = new Square(x, 10 * screenHeight, 50);
-        Square obstacle7 = new Square(x, 10 * screenHeight, 60);
-        Square obstacle8 = new Square(x, 10 * screenHeight, 70);
-        Square obstacle9 = new Square(x, 10 * screenHeight, 80);
+        VerticalBar obstacle2 = new VerticalBar(x, 5 * screenHeight, 20, 60);
+        RotatingCircle obstacle3 = new RotatingCircle(x, 2 * screenHeight, 30);
+        GrowingCircle obstacle4 = new GrowingCircle(x, 2.25 * screenHeight, 45);
+        GrowingCircle obstacle5 = new GrowingCircle(x, 2.25 * screenHeight, 45);
+        RotatingCircle obstacle6 = new RotatingCircle(x, 2 * screenHeight, 30);
+        VerticalBar obstacle7 = new VerticalBar(x, 5 * screenHeight, 20, 60);
+        Square obstacle8 = new Square(x, 10 * screenHeight, 10);
 
         obstacles.add(obstacle1);
         obstacles.add(obstacle2);
@@ -26,7 +25,6 @@ public class Level6 extends Level{
         obstacles.add(obstacle6);
         obstacles.add(obstacle7);
         obstacles.add(obstacle8);
-        obstacles.add(obstacle9);
 
         // Création des items
         Potion potion1 = new Potion(x, 2 * screenHeight);
