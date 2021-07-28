@@ -50,6 +50,10 @@ public class Player extends Entity {
         return color;
     }
 
+    public void setColor(int color) {
+        this.color = color;
+    }
+
     /**
      * Remplace la couleur actuelle par une nouvelle couleur aléatoire
      */

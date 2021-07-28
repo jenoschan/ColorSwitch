@@ -5,32 +5,35 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 /**
  * Item : Shield.
  *
- * La sorcière devient invincible pendant 3s.
+ * La sorcière change de couleur automatiquement.
  */
-public class Speed extends Item {
+public class ColorChange extends Item {
 
     private boolean used = false;
-    private double vy;
-    private double ay;
+    private double timeSinceColorChange = 0;
 
-    public Speed(double x, double y) {
+    public ColorChange(double x, double y) {
         super(x, y);
 
-        this.vy = 0;
-        this.ay = -400;
+        this.renderer = new ImageRenderer("color_changing", this);
 
-        this.renderer = new ImageRenderer("fast_forward", this);
+        this.color = (int) (Math.random() * 4);
     }
 
     @Override
     public void tick(double dt) {
-        vy += dt * ay * 2;
+        timeSinceColorChange += dt;
 
-        vy = Math.min(vy, 300);
-        vy = Math.max(vy, -300);
+        if (timeSinceColorChange > 2) {
+            color = (color + 1) % 4;
+            timeSinceColorChange = 0;
+        }
     }
 
     @Override
@@ -46,7 +49,15 @@ public class Speed extends Item {
     @Override
     public void handleCollision(Player player, Game game) {
         used = true;
-        this.renderer = new ImageRenderer("fast_forward", this);
+        this.renderer = new ImageRenderer("color_changing", this);
+
+        Timer t = new Timer();
+        t.schedule(new TimerTask() {
+            @Override
+            public void run() {
+               player.randomizeColor();
+            }
+        }, 0, 5000);
     }
 
     public boolean isUsed() {
