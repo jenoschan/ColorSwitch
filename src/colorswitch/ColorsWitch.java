@@ -135,6 +135,15 @@ public class ColorsWitch extends Application {
                     controller.tabTyped();
                 }
             }
+            if (event.getCode() == KeyCode.ESCAPE) {
+                System.exit(0);
+            }
+        });
+
+        scene1.setOnKeyPressed((event) ->{
+            if (event.getCode() == KeyCode.ESCAPE) {
+                System.exit(0);
+            }
         });
 
         //Start Game
