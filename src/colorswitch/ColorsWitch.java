@@ -60,12 +60,24 @@ public class ColorsWitch extends Application {
         Label level2 = new Label("2");
         Label level3 = new Label("3");
         Label level4 = new Label("4");
+        Label level5 = new Label("5");
+        Label level6 = new Label("6");
+        Label level7 = new Label("7");
+        Label level8 = new Label("8");
+        Label level9 = new Label("9");
+        Label level10 = new Label("10");
         level1.setTextFill(Color.WHITE);
         level2.setTextFill(Color.WHITE);
         level3.setTextFill(Color.WHITE);
         level4.setTextFill(Color.WHITE);
+        level5.setTextFill(Color.WHITE);
+        level6.setTextFill(Color.WHITE);
+        level7.setTextFill(Color.WHITE);
+        level8.setTextFill(Color.WHITE);
+        level9.setTextFill(Color.WHITE);
+        level10.setTextFill(Color.WHITE);
 
-        levelChoices.getChildren().addAll(level1,level2,level3,level4);
+        levelChoices.getChildren().addAll(level1,level2,level3,level4,level5,level6,level7,level8,level9,level10);
         levelChoices.setAlignment(Pos.CENTER);
         layout1.getChildren().addAll(label,levelChoices,startButton);
         Scene scene1 = new Scene(layout1,WIDTH,HEIGHT);
