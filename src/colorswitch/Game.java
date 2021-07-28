@@ -54,6 +54,12 @@ public class Game {
             case 4:
                 level = new Level4(screenWidth, screenHeight);
                 break;
+            case 5:
+                level = new Level5(screenWidth, screenHeight);
+                break;
+            case 6:
+                level = new Level6(screenWidth, screenHeight);
+                break;
             default:
                 throw new IllegalArgumentException("Niveau inconnu");
         }
