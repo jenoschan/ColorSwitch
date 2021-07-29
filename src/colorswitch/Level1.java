@@ -1,8 +1,5 @@
 package colorswitch;
 
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-
 public class Level1 extends Level {
 
     public Level1(double screenWidth, double screenHeight) {
@@ -17,6 +14,7 @@ public class Level1 extends Level {
         Square obstacle4 = new Square(x, 3 * screenHeight, 200);
         VerticalBar obstacle5 = new VerticalBar(x, 4 * screenHeight, 40, 100);
         GrowingCircle obstacle6 = new GrowingCircle(x, 3.5 * screenHeight, 25);
+        RotatingCircle obstacle7 = new RotatingCircle(0, 5 * screenHeight, 25);
 
         obstacles.add(obstacle1);
         obstacles.add(obstacle2);
@@ -24,6 +22,7 @@ public class Level1 extends Level {
         obstacles.add(obstacle4);
         obstacles.add(obstacle5);
         obstacles.add(obstacle6);
+        obstacles.add(obstacle7);
 
         // Création des items
         ColorChange colorChange = new ColorChange(x,0.2 * screenHeight);

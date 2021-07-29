@@ -1,12 +1,5 @@
 package colorswitch;
 
-import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.Window;
-
 import java.util.List;
 
 /**
@@ -45,6 +38,10 @@ public class Controller {
         return this.game.getLevel();
     }
 
+    public void setLevel(Level level){
+        this.game.setLevel(level);
+    }
+
     /**
      * Fonction appelée lorsque la barre espace est enfoncée.
      */
@@ -58,6 +55,6 @@ public class Controller {
     }
     public void tabTypedTwo() {
         this.game.setInvincible(false);
-        System.out.println("You're not longer invincible!");
+        System.out.println("You're no longer invincible!");
     }
 }

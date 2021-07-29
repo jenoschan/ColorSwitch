@@ -1,10 +1,5 @@
 package colorswitch;
 
-import javafx.animation.FadeTransition;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
-
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -23,17 +18,12 @@ public class ColorChange extends Item {
 
         this.renderer = new ImageRenderer("color_changing", this);
 
-        this.color = (int) (Math.random() * 4);
+//        this.color = (int) (Math.random() * 4);
     }
 
     @Override
     public void tick(double dt) {
-        timeSinceColorChange += dt;
-
-        if (timeSinceColorChange > 2) {
-            color = (color + 1) % 4;
-            timeSinceColorChange = 0;
-        }
+        //
     }
 
     @Override

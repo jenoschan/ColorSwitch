@@ -10,8 +10,7 @@ public class Mushroom extends Item {
     public Mushroom(double x, double y) {
         super(x, y);
 
-        this.renderer = new AnimationRenderer("mushroom_animation", 26,26*1e-9, this);
-//        this.renderer = new ImageRenderer("mushroom",this);
+        this.renderer = new AnimationRenderer("mushroom_animation", 26, 1e-9, this);
     }
 
     @Override

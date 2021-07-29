@@ -42,38 +42,17 @@ public class Game {
         player = new Player(screenWidth / 2, 200, 15);
 
         switch (levelNumber) {
-            case 1:
-                level = new Level1(screenWidth, screenHeight);
-                break;
-            case 2:
-                level = new Level2(screenWidth, screenHeight);
-                break;
-            case 3:
-                level = new Level3(screenWidth, screenHeight);
-                break;
-            case 4:
-                level = new Level4(screenWidth, screenHeight);
-                break;
-            case 5:
-                level = new Level5(screenWidth, screenHeight);
-                break;
-            case 6:
-                level = new Level6(screenWidth, screenHeight);
-                break;
-            case 7:
-                level = new Level7(screenWidth, screenHeight);
-                break;
-            case 8:
-                level = new Level8(screenWidth, screenHeight);
-                break;
-            case 9:
-                level = new Level9(screenWidth, screenHeight);
-                break;
-            case 10:
-                level = new Level10(screenWidth, screenHeight);
-                break;
-            default:
-                throw new IllegalArgumentException("Niveau inconnu");
+            case 1 -> level = new Level1(screenWidth, screenHeight);
+            case 2 -> level = new Level2(screenWidth, screenHeight);
+            case 3 -> level = new Level3(screenWidth, screenHeight);
+            case 4 -> level = new Level4(screenWidth, screenHeight);
+            case 5 -> level = new Level5(screenWidth, screenHeight);
+            case 6 -> level = new Level6(screenWidth, screenHeight);
+            case 7 -> level = new Level7(screenWidth, screenHeight);
+            case 8 -> level = new Level8(screenWidth, screenHeight);
+            case 9 -> level = new Level9(screenWidth, screenHeight);
+            case 10 -> level = new Level10(screenWidth, screenHeight);
+            default -> throw new IllegalArgumentException("Niveau inconnu");
         }
     }
 
@@ -106,9 +85,8 @@ public class Game {
      * @return les entités à afficher à l'écran
      */
     public List<Entity> getEntities() {
-        List<Entity> entities = new ArrayList<>();
 
-        entities.addAll(level.getEntities());
+        List<Entity> entities = new ArrayList<>(level.getEntities());
         entities.add(player);
 
         return entities;
@@ -116,6 +94,10 @@ public class Game {
 
     public Level getLevel() {
         return level;
+    }
+
+    public void setLevel(Level level) {
+        this.level = level;
     }
 
     public void jump() {

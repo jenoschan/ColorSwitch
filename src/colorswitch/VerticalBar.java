@@ -1,14 +1,5 @@
 package colorswitch;
 
-import javafx.animation.*;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.effect.ColorAdjust;
-import javafx.util.Duration;
-
-import java.awt.*;
-import java.security.Key;
-import java.sql.Time;
-
 /**
  * Obstacle 2: Vertical Bar : un Rectangle qui bouge de gauche à droite.
  */
@@ -16,7 +7,8 @@ public class VerticalBar extends Obstacle {
 
     private double width;
     private double height;
-    private double timeSinceMove =0;
+
+    private boolean isPositionL = true;
     
     public VerticalBar(double x, double y, double longueur, double hauteur) {
         super(x, y);
@@ -40,27 +32,35 @@ public class VerticalBar extends Obstacle {
 
     @Override
     public void tick(double dt) {
-        //todo make VerticalBar go left and right
+        if (isPositionL) {
+            // Move right
+            if(x < ColorsWitch.WIDTH - width/2){
+                x += dt * 100;
+            }else{
+                isPositionL = false;
+            }
 
-//        timeSinceMove += dt;
-//
-//        if (timeSinceMove > 2) {
-//            //Make it move here?
-//            timeSinceMove = 0;
-//        }
+        } else if ( x > 0 ){
+            x -= dt * 100;
+        } else {
+            isPositionL = true;
+        }
 
     }
+
+
 
     public int getColor() {
         return color;
     }
 
+    //todo rework the collision
     @Override
     public boolean intersects(Player player) {
         return this.color != player.getColor()
-                && player.getX() + player.getRadius()< this.getX() + this.getWidth() / 2
-                && player.getX() + player.getRadius()> this.getX() - this.getWidth() / 2
-                && player.getY() + player.getRadius()< this.getY() + this.getHeight() / 2
-                && player.getY() + player.getRadius()> this.getY() - this.getHeight() / 2;
+                && player.getX() + player.getRadius() < this.getX() + this.getWidth() / 2 //right
+                && player.getX() + player.getRadius() > this.getX() - this.getWidth() / 2 //left
+                && player.getY() + player.getRadius() < this.getY() + this.getHeight() / 2 //down
+                && player.getY() + player.getRadius() > this.getY() - this.getHeight() / 2; //up
     }
 }

@@ -1,9 +1,6 @@
 package colorswitch;
 
-import javafx.animation.FadeTransition;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
+//todo test this item
 
 /**
  * Item : Shield.
