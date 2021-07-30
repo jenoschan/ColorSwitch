@@ -2,20 +2,22 @@ package colorswitch;
 
 
 /**
- * Obstacle simple : un cercle qui change de couleur à toutes les 2 secondes et "rotate".
+ * Un rectangle qui change de couleur à toutes les 2 secondes et bouge diagonalement.
  */
-public class RotatingCircle extends Obstacle {
+public class DiagonalBar extends Obstacle {
 
     private double width;
-    private double timeSinceColorChange = 0;
+    private double height;
     private double yPos = this.getY();
-    private double time;
+    private double timeSinceColorChange = 0;
+    private boolean isPositionL = true;
 
-    public RotatingCircle(double x, double y, double width) {
+    public DiagonalBar(double x, double y, double width, double height) {
         super(x, y);
 
         this.width = width;
-        this.renderer = new RotatingRenderer(this);
+        this.height = height;
+        this.renderer = new DiagonalRenderer(this);
 
         this.color = (int) (Math.random() * 4);
     }
@@ -27,22 +29,35 @@ public class RotatingCircle extends Obstacle {
 
     @Override
     public double getHeight() {
-        return width;
+        return height;
     }
 
     @Override
     public void tick(double dt) {
+
         timeSinceColorChange += dt;
 
-        if (timeSinceColorChange > 4) {
+        if (timeSinceColorChange > 2) {
             color = (color + 1) % 4;
             timeSinceColorChange = 0;
         }
 
-        time += (1/60.0);
 
-        x = 100 * Math.cos(time) + ColorsWitch.WIDTH/2;
-        y = 100 * Math.sin(time) + yPos;
+        if (isPositionL) {
+            // Move right
+            if(x < ColorsWitch.WIDTH - width/2){
+                x += dt * 100;
+                y += dt * 100;
+            }else{
+                isPositionL = false;
+            }
+
+        } else if ( x > 0 ){
+            x -= dt * 100;
+            y -= dt * 100;
+        } else {
+            isPositionL = true;
+        }
     }
 
     public int getColor() {

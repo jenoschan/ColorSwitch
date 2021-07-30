@@ -1,33 +1,28 @@
 package colorswitch;
 
-//todo test this item
-
 /**
- * Item : Shield.
+ * Item : Spring.
  *
- * La sorcière devient invincible pendant 3s.
+ * La sorcière se fait repousser.
  */
-public class Speed extends Item {
+public class Spring extends Item {
 
     private boolean used = false;
     private double vy;
     private double ay;
 
-    public Speed(double x, double y) {
+    public Spring(double x, double y) {
         super(x, y);
 
         this.vy = 0;
-        this.ay = -400;
+        this.ay = 400;
 
-        this.renderer = new ImageRenderer("fast_forward", this);
+        this.renderer = new ImageRenderer("spring", this);
     }
 
     @Override
     public void tick(double dt) {
-        vy += dt * ay * 2;
-
-        vy = Math.min(vy, 300);
-        vy = Math.max(vy, -300);
+        vy -= dt * ay;
     }
 
     @Override
@@ -43,7 +38,8 @@ public class Speed extends Item {
     @Override
     public void handleCollision(Player player, Game game) {
         used = true;
-        this.renderer = new ImageRenderer("fast_forward", this);
+        this.renderer = new ImageRenderer("spring", this);
+        player.setVy(vy);
     }
 
     public boolean isUsed() {

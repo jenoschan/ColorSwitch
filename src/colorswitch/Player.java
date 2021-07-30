@@ -23,6 +23,10 @@ public class Player extends Entity {
         this.renderer = new PlayerRenderer(this);
     }
 
+    public void setVy(double vy) {
+        this.vy = vy;
+    }
+
     public double getRadius() {
         return radius;
     }

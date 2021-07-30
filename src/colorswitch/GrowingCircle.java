@@ -54,7 +54,6 @@ public class GrowingCircle extends Obstacle {
         return color;
     }
 
-    //todo rework the collision
     @Override
     public boolean intersects(Player player) {
         return this.color != player.getColor()

@@ -14,14 +14,12 @@ public class Level2 extends Level {
         Square obstacle3 = new Square(x, 3.5 * screenHeight, 150);
         Square obstacle4 = new Square(x, 3 * screenHeight, 200);
         VerticalBar obstacle5 = new VerticalBar(x, 2 * screenHeight, 40, 100);
-        RotatingCircle obstacle6 = new RotatingCircle(x, 0 * screenHeight, 20);
 
         obstacles.add(obstacle1);
         obstacles.add(obstacle2);
         obstacles.add(obstacle3);
         obstacles.add(obstacle4);
         obstacles.add(obstacle5);
-        obstacles.add(obstacle6);
 
         // Création des items
         Potion potion1 = new Potion(x, 1.15 * screenHeight);

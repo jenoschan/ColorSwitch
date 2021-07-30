@@ -18,10 +18,6 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import java.util.List;
 
-//todo make 2 more obstacles
-/** 1. rotating and moving shiruken
- *  2. randomly appearing circle
- */
 
 
 /**
@@ -34,6 +30,7 @@ public class ColorsWitch extends Application {
 
     private Controller controller;
     private int tab = 0;
+    String labelName;
 
     public static void main(String[] args) {
         launch(args);
@@ -53,7 +50,6 @@ public class ColorsWitch extends Application {
         layout1.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
 
         //Level display
-        //todo: optimize this
         HBox levelChoices = new HBox(10);
         Label level1 = new Label("1");
         Label level2 = new Label("2");
@@ -80,8 +76,6 @@ public class ColorsWitch extends Application {
         levelChoices.setAlignment(Pos.CENTER);
         layout1.getChildren().addAll(label,levelChoices,startButton);
         Scene scene1 = new Scene(layout1,WIDTH,HEIGHT);
-
-
 
         // Game view - Scene2
         controller = new Controller();

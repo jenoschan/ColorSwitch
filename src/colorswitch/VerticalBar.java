@@ -9,7 +9,7 @@ public class VerticalBar extends Obstacle {
     private double height;
 
     private boolean isPositionL = true;
-    
+
     public VerticalBar(double x, double y, double longueur, double hauteur) {
         super(x, y);
 
@@ -49,18 +49,19 @@ public class VerticalBar extends Obstacle {
     }
 
 
-
     public int getColor() {
         return color;
     }
 
-    //todo rework the collision
+
     @Override
     public boolean intersects(Player player) {
+        double NearestX = Math.max(this.getX(), Math.min(player.getX(), this.getX() + this.getWidth()));
+        double NearestY = Math.max(this.getY(), Math.min(player.getY(), this.getY() + this.getHeight()));
+        double DeltaX = player.getX() - NearestX;
+        double DeltaY = player.getY() - NearestY;
         return this.color != player.getColor()
-                && player.getX() + player.getRadius() < this.getX() + this.getWidth() / 2 //right
-                && player.getX() + player.getRadius() > this.getX() - this.getWidth() / 2 //left
-                && player.getY() + player.getRadius() < this.getY() + this.getHeight() / 2 //down
-                && player.getY() + player.getRadius() > this.getY() - this.getHeight() / 2; //up
+                && (DeltaX * DeltaX + DeltaY * DeltaY) < (player.getRadius() * player.getRadius());
+
     }
 }
