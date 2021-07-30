@@ -2,8 +2,6 @@ package colorswitch;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -17,12 +15,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
-import javax.sound.midi.SysexMessage;
 import java.util.List;
-import java.util.stream.Stream;
+
+
 
 /**
  * Classe principale. Définit la vue.
@@ -33,8 +29,8 @@ public class ColorsWitch extends Application {
     private static GraphicsContext context;
 
     private Controller controller;
-//    private GraphicsContext context;
     private int tab = 0;
+    String labelName;
 
     public static void main(String[] args) {
         launch(args);
@@ -44,7 +40,7 @@ public class ColorsWitch extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         //Menu
-        Label label = new Label("COLORWITCH");
+        Label label = new Label("COLORS WITCH");
         label.setTextFill(Color.WHITE);
         label.setFont((Font.font("Helvetica", FontWeight.BOLD, FontPosture.REGULAR,30)));
         Button startButton = new Button("Start game");
@@ -54,7 +50,6 @@ public class ColorsWitch extends Application {
         layout1.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
 
         //Level display
-        //todo: optimize this
         HBox levelChoices = new HBox(10);
         Label level1 = new Label("1");
         Label level2 = new Label("2");
@@ -83,14 +78,7 @@ public class ColorsWitch extends Application {
         layout1.getChildren().addAll(label,levelChoices,startButton);
         Scene scene1 = new Scene(layout1,WIDTH,HEIGHT);
 
-        //todo: level selection -> Currently not working
-        //onclick -> Goes to x level
-        level1.setOnMouseClicked(e -> new Game(WIDTH,HEIGHT,1));
-        level2.setOnMouseClicked(e -> new Game(WIDTH,HEIGHT,2));
-        level3.setOnMouseClicked(e -> new Game(WIDTH,HEIGHT,3));
-        level4.setOnMouseClicked(e -> new Game(WIDTH,HEIGHT,4));
-
-        // Gameview - Scene2
+        // Game view - Scene2
         controller = new Controller();
 
         Canvas canvas = new Canvas(WIDTH, HEIGHT);
@@ -128,7 +116,7 @@ public class ColorsWitch extends Application {
                 controller.spaceTyped();
             }
             if (event.getCode() == KeyCode.TAB){
-                if (event.getCode() == KeyCode.TAB && tab == 1){
+                if (tab == 1){
                     controller.tabTypedTwo();
                     tab = 0;
                 } else{
@@ -137,7 +125,7 @@ public class ColorsWitch extends Application {
                 }
             }
             if (event.getCode() == KeyCode.ESCAPE) {
-                System.exit(0);
+                primaryStage.setScene(scene1);
             }
         });
 
@@ -150,13 +138,32 @@ public class ColorsWitch extends Application {
         //Start Game
         startButton.setOnAction(e-> primaryStage.setScene(scene2));
 
+        //onclick -> Goes to x level
+        level1.setOnMouseClicked(e -> {controller.setLevel(new Level1(ColorsWitch.WIDTH, ColorsWitch.HEIGHT));
+                                    primaryStage.setScene(scene2);});
+        level2.setOnMouseClicked(e -> {controller.setLevel(new Level2(ColorsWitch.WIDTH, ColorsWitch.HEIGHT));
+                                    primaryStage.setScene(scene2);});
+        level3.setOnMouseClicked(e -> {controller.setLevel(new Level3(ColorsWitch.WIDTH, ColorsWitch.HEIGHT));
+                                    primaryStage.setScene(scene2);});
+        level4.setOnMouseClicked(e -> {controller.setLevel(new Level4(ColorsWitch.WIDTH, ColorsWitch.HEIGHT));
+                                    primaryStage.setScene(scene2);});
+        level5.setOnMouseClicked(e -> {controller.setLevel(new Level5(ColorsWitch.WIDTH, ColorsWitch.HEIGHT));
+                                    primaryStage.setScene(scene2);});
+        level6.setOnMouseClicked(e -> {controller.setLevel(new Level6(ColorsWitch.WIDTH, ColorsWitch.HEIGHT));
+                                    primaryStage.setScene(scene2);});
+        level7.setOnMouseClicked(e -> {controller.setLevel(new Level7(ColorsWitch.WIDTH, ColorsWitch.HEIGHT));
+                                    primaryStage.setScene(scene2);});
+        level8.setOnMouseClicked(e -> {controller.setLevel(new Level8(ColorsWitch.WIDTH, ColorsWitch.HEIGHT));
+                                    primaryStage.setScene(scene2);});
+        level9.setOnMouseClicked(e -> {controller.setLevel(new Level9(ColorsWitch.WIDTH, ColorsWitch.HEIGHT));
+                                    primaryStage.setScene(scene2);});
+        level10.setOnMouseClicked(e -> {controller.setLevel(new Level10(ColorsWitch.WIDTH, ColorsWitch.HEIGHT));
+                                    primaryStage.setScene(scene2);});
+
         primaryStage.setTitle("Colors Witch");
         primaryStage.setScene(scene1);
         primaryStage.setResizable(false);
         primaryStage.show();
     }
 
-    public static GraphicsContext getContext() {
-        return context;
-    }
 }

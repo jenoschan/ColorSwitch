@@ -1,9 +1,7 @@
 package colorswitch;
 
-import javafx.animation.ScaleTransition;
-import javafx.scene.Node;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.util.Duration;
+
 
 /**
  * Fait le rendu d'un Cercle qui "pulse".

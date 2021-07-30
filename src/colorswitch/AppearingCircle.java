@@ -2,20 +2,19 @@ package colorswitch;
 
 
 /**
- * Obstacle simple : un cercle qui change de couleur à toutes les 2 secondes et "rotate".
+ * Un cercle qui change de couleur à toutes les 2 secondes & change de position en x.
  */
-public class RotatingCircle extends Obstacle {
+public class AppearingCircle extends Obstacle {
 
     private double width;
     private double timeSinceColorChange = 0;
-    private double yPos = this.getY();
-    private double time;
+    private double timeSinceMove = 0;
 
-    public RotatingCircle(double x, double y, double width) {
+    public AppearingCircle(double x, double y, double width) {
         super(x, y);
 
         this.width = width;
-        this.renderer = new RotatingRenderer(this);
+        this.renderer = new AppearingRenderer(this);
 
         this.color = (int) (Math.random() * 4);
     }
@@ -33,22 +32,21 @@ public class RotatingCircle extends Obstacle {
     @Override
     public void tick(double dt) {
         timeSinceColorChange += dt;
+        timeSinceMove += dt;
 
         if (timeSinceColorChange > 4) {
             color = (color + 1) % 4;
             timeSinceColorChange = 0;
+        } if (timeSinceMove > 0.5){
+            x = ColorsWitch.WIDTH * Math.random();
+            timeSinceMove = 0;
         }
 
-        time += (1/60.0);
-
-        x = 100 * Math.cos(time) + ColorsWitch.WIDTH/2;
-        y = 100 * Math.sin(time) + yPos;
     }
 
     public int getColor() {
         return color;
     }
-
 
     @Override
     public boolean intersects(Player player) {

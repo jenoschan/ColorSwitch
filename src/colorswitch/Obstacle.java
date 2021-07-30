@@ -22,7 +22,7 @@ public abstract class Obstacle extends LevelElement {
      */
     @Override
     public void handleCollision(Player player, Game game) {
-        if (game.invincible() == true){
+        if (game.invincible()){
             game.ok();
         }else {
             game.loose();

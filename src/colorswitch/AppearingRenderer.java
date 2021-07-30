@@ -2,14 +2,15 @@ package colorswitch;
 
 import javafx.scene.canvas.GraphicsContext;
 
+
 /**
- * Fait le rendu d'un Cercle qui rotate".
+ * Fait le rendu d'un Cercle qui change de position en x.
  */
-public class RotatingRenderer extends Renderer {
+public class AppearingRenderer extends Renderer {
 
-    private RotatingCircle circle;
+    private AppearingCircle circle;
 
-    public RotatingRenderer(RotatingCircle c) {
+    public AppearingRenderer(AppearingCircle c) {
         this.circle = c;
     }
 

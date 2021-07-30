@@ -1,14 +1,5 @@
 package colorswitch;
 
-import javafx.animation.*;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.effect.ColorAdjust;
-import javafx.util.Duration;
-
-import java.awt.*;
-import java.security.Key;
-import java.sql.Time;
-
 /**
  * Obstacle 2: Vertical Bar : un Rectangle qui bouge de gauche à droite.
  */
@@ -16,8 +7,9 @@ public class VerticalBar extends Obstacle {
 
     private double width;
     private double height;
-    private double timeSinceMove =0;
-    
+
+    private boolean isPositionL = true;
+
     public VerticalBar(double x, double y, double longueur, double hauteur) {
         super(x, y);
 
@@ -40,27 +32,36 @@ public class VerticalBar extends Obstacle {
 
     @Override
     public void tick(double dt) {
-        //todo make VerticalBar go left and right
+        if (isPositionL) {
+            // Move right
+            if(x < ColorsWitch.WIDTH - width/2){
+                x += dt * 100;
+            }else{
+                isPositionL = false;
+            }
 
-//        timeSinceMove += dt;
-//
-//        if (timeSinceMove > 2) {
-//            //Make it move here?
-//            timeSinceMove = 0;
-//        }
+        } else if ( x > 0 ){
+            x -= dt * 100;
+        } else {
+            isPositionL = true;
+        }
 
     }
+
 
     public int getColor() {
         return color;
     }
 
+
     @Override
     public boolean intersects(Player player) {
+        double NearestX = Math.max(this.getX(), Math.min(player.getX(), this.getX() + this.getWidth()));
+        double NearestY = Math.max(this.getY(), Math.min(player.getY(), this.getY() + this.getHeight()));
+        double DeltaX = player.getX() - NearestX;
+        double DeltaY = player.getY() - NearestY;
         return this.color != player.getColor()
-                && player.getX() + player.getRadius()< this.getX() + this.getWidth() / 2
-                && player.getX() + player.getRadius()> this.getX() - this.getWidth() / 2
-                && player.getY() + player.getRadius()< this.getY() + this.getHeight() / 2
-                && player.getY() + player.getRadius()> this.getY() - this.getHeight() / 2;
+                && (DeltaX * DeltaX + DeltaY * DeltaY) < (player.getRadius() * player.getRadius());
+
     }
 }
