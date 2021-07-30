@@ -25,17 +25,25 @@ import java.util.List;
  */
 public class ColorsWitch extends Application {
 
+    /**
+     * On définie les dimensions du jeu.
+     */
     public static final double WIDTH = 320, HEIGHT = 480;
     private static GraphicsContext context;
 
     private Controller controller;
     private int tab = 0;
-    String labelName;
+
 
     public static void main(String[] args) {
         launch(args);
     }
 
+    /**
+     * On configure le visuel du jeu et du menu.
+     * @param primaryStage
+     * @throws Exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -48,6 +56,10 @@ public class ColorsWitch extends Application {
         VBox layout1 = new VBox(20);
         layout1.setAlignment(Pos.CENTER);
         layout1.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
+
+        /**
+         * Setup des labels pour le menu
+         */
 
         //Level display
         HBox levelChoices = new HBox(10);
@@ -90,7 +102,10 @@ public class ColorsWitch extends Application {
         AnimationTimer timer = new AnimationTimer() {
             private long lastTime = System.nanoTime();
 
-
+            /**
+             * Fonction qui gère le temps qui passe
+             * @param now Le temps à l'instant
+             */
             @Override
             public void handle(long now) {
                 controller.tick((now - lastTime) * 1e-9);
@@ -138,6 +153,9 @@ public class ColorsWitch extends Application {
         //Start Game
         startButton.setOnAction(e-> primaryStage.setScene(scene2));
 
+        /**
+         * Configure le menu avec la selection des niveaux.
+         */
         //onclick -> Goes to x level
         level1.setOnMouseClicked(e -> {controller.setLevel(new Level1(ColorsWitch.WIDTH, ColorsWitch.HEIGHT));
                                     primaryStage.setScene(scene2);});

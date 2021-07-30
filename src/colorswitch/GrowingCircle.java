@@ -9,6 +9,12 @@ public class GrowingCircle extends Obstacle {
     private double timeSinceColorChange = 0;
     private boolean isGrowing = true;
 
+    /**
+     * Constructeur de l'obstacle
+     * @param x Position x de l'obstacle
+     * @param y Position y de l'obstacle
+     * @param width Largeur de l'obstacle
+     */
     public GrowingCircle(double x, double y, double width) {
         super(x, y);
 
@@ -28,6 +34,10 @@ public class GrowingCircle extends Obstacle {
         return width;
     }
 
+    /**
+     * Fonction qui fait grossir et rapetisser le cercle avec des limites.
+     * @param dt Delta-Temps en secondes
+     */
     @Override
     public void tick(double dt) {
         timeSinceColorChange += dt;

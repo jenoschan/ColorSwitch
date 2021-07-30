@@ -8,6 +8,12 @@ public class Square extends Obstacle {
     private double width;
     private double timeSinceColorChange = 0;
 
+    /**
+     * Constructeur du carré
+     * @param x Element x du carré
+     * @param y Element y du carré
+     * @param longueur Longueur du carré
+     */
     public Square(double x, double y, double longueur) {
         super(x, y);
 

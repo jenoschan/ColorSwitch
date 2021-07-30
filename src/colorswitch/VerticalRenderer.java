@@ -3,7 +3,7 @@ package colorswitch;
 import javafx.scene.canvas.GraphicsContext;
 
 /**
- * Fait le rendu d'une barre vertical en dessinant un rectangle coloré sur l'écran qui bouge .
+ * Fait le rendu d'une barre verticale en dessinant un rectangle coloré sur l'écran qui bouge .
  */
 public class VerticalRenderer extends Renderer {
 

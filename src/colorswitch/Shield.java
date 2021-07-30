@@ -30,6 +30,12 @@ public class Shield extends Item {
         return 32;
     }
 
+    /**
+     * Fonction qui vérifie les collisions entre la sorcière et le shield.
+     * Rend la sorcière invicible et affiche un message quand c'est le cas.
+     * @param player
+     * @param game
+     */
     @Override
     public void handleCollision(Player player, Game game) {
         used = true;

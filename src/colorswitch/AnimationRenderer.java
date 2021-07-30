@@ -10,6 +10,9 @@ import javafx.scene.image.Image;
 
 public class AnimationRenderer extends Renderer {
 
+    /**
+     * On initialise les différentes variables
+     */
     private Image img;
     private Entity entity;
     private String prefix;
@@ -18,6 +21,13 @@ public class AnimationRenderer extends Renderer {
 
     private double lastTime = System.nanoTime();
 
+    /**
+     *
+     * @param prefix Prefixe de l'image à render
+     * @param number Numéro de l'image à render
+     * @param framerate Framerate de diffusion
+     * @param entity Item à render
+     */
     public AnimationRenderer(String prefix, int number, double framerate, Entity entity) {
         this.img = new Image(prefix + number + ".png");
         this.prefix = prefix;
@@ -27,6 +37,10 @@ public class AnimationRenderer extends Renderer {
     }
 
     @Override
+
+    /**
+     * Fonction qui dessine l'entité
+     */
     public void draw(Level level, GraphicsContext context) {
 
         double x = this.entity.getX();

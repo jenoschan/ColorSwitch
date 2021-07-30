@@ -11,6 +11,12 @@ public class RotatingCircle extends Obstacle {
     private double yPos = this.getY();
     private double time;
 
+    /**
+     * Constructeur pour le cercle rotatif
+     * @param x Element x du cercle
+     * @param y Element y du cercle
+     * @param width Largeur du cercle
+     */
     public RotatingCircle(double x, double y, double width) {
         super(x, y);
 
@@ -30,6 +36,10 @@ public class RotatingCircle extends Obstacle {
         return width;
     }
 
+    /**
+     * Fonction qui utile des sin et des cos pour faire un mouvement circulaire.
+     * @param dt Delta-Temps en secondes
+     */
     @Override
     public void tick(double dt) {
         timeSinceColorChange += dt;

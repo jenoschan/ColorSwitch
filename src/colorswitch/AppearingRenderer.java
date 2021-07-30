@@ -4,7 +4,7 @@ import javafx.scene.canvas.GraphicsContext;
 
 
 /**
- * Fait le rendu d'un Cercle qui change de position en x.
+ * Fait le rendu d'un Cercle qui change de position en x aléatoirement.
  */
 public class AppearingRenderer extends Renderer {
 
@@ -14,6 +14,11 @@ public class AppearingRenderer extends Renderer {
         this.circle = c;
     }
 
+    /**
+     * Fonction qui dessine le cercle dans le niveau.
+     * @param level Niveau dans lequel dessiner.
+     * @param context Endroit ou dessiner.
+     */
     @Override
     public void draw(Level level, GraphicsContext context) {
 

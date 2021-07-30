@@ -1,5 +1,7 @@
 package colorswitch;
-
+/**
+ * Niveau 9
+ */
 public class Level9 extends Level{
 
     public Level9(double screenWidth, double screenHeight) {

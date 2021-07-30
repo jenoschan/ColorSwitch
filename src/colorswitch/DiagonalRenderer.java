@@ -3,7 +3,7 @@ package colorswitch;
 import javafx.scene.canvas.GraphicsContext;
 
 /**
- * Fait le rendu d'un rectandle qui bouge diagonalement".
+ * Fait le rendu d'un rectangle qui bouge diagonalement".
  */
 public class DiagonalRenderer extends Renderer {
 

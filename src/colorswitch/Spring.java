@@ -3,7 +3,7 @@ package colorswitch;
 /**
  * Item : Spring.
  *
- * La sorcière se fait repousser.
+ * La sorcière se fait repousser par un spring.
  */
 public class Spring extends Item {
 
@@ -20,6 +20,10 @@ public class Spring extends Item {
         this.renderer = new ImageRenderer("spring", this);
     }
 
+    /**
+     * Inverse la vitesse du joueur
+     * @param dt Delta-Temps en secondes
+     */
     @Override
     public void tick(double dt) {
         vy -= dt * ay;
@@ -34,6 +38,7 @@ public class Spring extends Item {
     public double getHeight() {
         return 32;
     }
+
 
     @Override
     public void handleCollision(Player player, Game game) {

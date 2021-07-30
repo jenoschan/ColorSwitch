@@ -4,7 +4,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * Item : Shield.
+ * Item : ColorChange.
  *
  * La sorcière change de couleur automatiquement.
  */
@@ -36,6 +36,11 @@ public class ColorChange extends Item {
         return 32;
     }
 
+    /**
+     *  Fonction qui vérifie si le joueur entre en collision
+     * @param player Le joueur
+     * @param game Le contexte du jeu
+     */
     @Override
     public void handleCollision(Player player, Game game) {
         used = true;

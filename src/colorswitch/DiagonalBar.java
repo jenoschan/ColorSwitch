@@ -12,6 +12,13 @@ public class DiagonalBar extends Obstacle {
     private double timeSinceColorChange = 0;
     private boolean isPositionL = true;
 
+    /**
+     * Constructeur pour l'obstacle.
+     * @param x Position de l'obstacle en x
+     * @param y Position de l'obstacle en y
+     * @param width Largeur de l'obstacle
+     * @param height Hauteur de l'obstacle
+     */
     public DiagonalBar(double x, double y, double width, double height) {
         super(x, y);
 
@@ -32,6 +39,10 @@ public class DiagonalBar extends Obstacle {
         return height;
     }
 
+    /**
+     * Fonction qui fait bouger la barre de droite à gauche.
+     * @param dt Delta-Temps en secondes
+     */
     @Override
     public void tick(double dt) {
 

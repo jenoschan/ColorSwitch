@@ -10,6 +10,13 @@ public class VerticalBar extends Obstacle {
 
     private boolean isPositionL = true;
 
+    /**
+     * Constructeur de la barre verticale.
+     * @param x Element x de la barre
+     * @param y Element y de la barre
+     * @param longueur Longueur de la barre
+     * @param hauteur Hauteur de la barre
+     */
     public VerticalBar(double x, double y, double longueur, double hauteur) {
         super(x, y);
 
@@ -30,6 +37,10 @@ public class VerticalBar extends Obstacle {
         return height;
     }
 
+    /**
+     * Fonction qui vérifie si la barre est arrivée à un bout ou l'autre et inverse le mouvement.
+     * @param dt Delta-Temps en secondes
+     */
     @Override
     public void tick(double dt) {
         if (isPositionL) {
