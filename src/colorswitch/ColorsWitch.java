@@ -77,6 +77,7 @@ public class ColorsWitch extends Application {
         level9.setTextFill(Color.WHITE);
         level10.setTextFill(Color.WHITE);
 
+
         levelChoices.getChildren().addAll(level1,level2,level3,level4,level5,level6,level7,level8,level9,level10);
         levelChoices.setAlignment(Pos.CENTER);
         layout1.getChildren().addAll(label,levelChoices,startButton);
