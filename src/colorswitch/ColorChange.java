@@ -11,7 +11,7 @@ import java.util.TimerTask;
 public class ColorChange extends Item {
 
     private boolean used = false;
-    private double timeSinceColorChange = 0;
+
 
     public ColorChange(double x, double y) {
         super(x, y);

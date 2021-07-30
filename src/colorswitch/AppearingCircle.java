@@ -1,6 +1,5 @@
 package colorswitch;
 
-import java.awt.*;
 
 /**
  * Un cercle qui change de couleur à toutes les 2 secondes & change de position en x.
