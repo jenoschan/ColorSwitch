@@ -1,3 +1,8 @@
+/** Jenny Diep p1107065
+ *  Farouk Kheder p1137723
+ */
+
+
 package colorswitch;
 
 import javafx.animation.AnimationTimer;
@@ -17,7 +22,6 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import java.util.List;
-
 
 
 /**
