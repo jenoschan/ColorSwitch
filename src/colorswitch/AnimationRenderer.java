@@ -1,3 +1,8 @@
+/** Jenny Diep p1107065
+ *  Farouk Kheder p1137723
+ */
+
+
 package colorswitch;
 
 
