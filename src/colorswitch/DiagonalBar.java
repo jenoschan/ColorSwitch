@@ -62,7 +62,7 @@ public class DiagonalBar extends Obstacle {
             }else{
                 isPositionL = false;
             }
-
+        //Move left
         } else if ( x > 0 ){
             x -= dt * 100;
             y -= dt * 100;

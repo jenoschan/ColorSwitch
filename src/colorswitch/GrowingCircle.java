@@ -1,7 +1,7 @@
 package colorswitch;
 
 /**
- * Obstacle simple : un cercle qui change de couleur à toutes les 2 secondes & pulse.
+ * Obstacle simple : un cercle qui change de couleur à toutes les 2 secondes & qui grossit.
  */
 public class GrowingCircle extends Obstacle {
 

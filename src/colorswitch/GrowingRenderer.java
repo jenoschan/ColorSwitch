@@ -4,7 +4,7 @@ import javafx.scene.canvas.GraphicsContext;
 
 
 /**
- * Fait le rendu d'un Cercle qui "pulse".
+ * Fait le rendu d'un Cercle qui grossit.
  */
 public class GrowingRenderer extends Renderer {
 

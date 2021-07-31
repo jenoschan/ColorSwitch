@@ -18,12 +18,11 @@ public class ColorChange extends Item {
 
         this.renderer = new ImageRenderer("color_changing", this);
 
-//        this.color = (int) (Math.random() * 4);
     }
 
     @Override
     public void tick(double dt) {
-        //
+        //Rien
     }
 
     @Override

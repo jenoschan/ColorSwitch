@@ -104,6 +104,7 @@ public class Game {
         player.jump();
     }
 
+    // Losing window message
     public void loose() {
         final Stage dialog = new Stage();
         dialog.initModality(Modality.APPLICATION_MODAL);
@@ -115,10 +116,10 @@ public class Game {
         Scene dialogScene = new Scene(dialogVbox, 100, 25);
         dialog.setScene(dialogScene);
         dialog.show();
-//        System.out.println("You loose... Too bad !");
         this.gameOver = true;
     }
 
+    // Winning window message
     public void win() {
         final Stage dialog = new Stage();
         dialog.initModality(Modality.APPLICATION_MODAL);
@@ -130,7 +131,6 @@ public class Game {
         Scene dialogScene = new Scene(dialogVbox, 100, 25);
         dialog.setScene(dialogScene);
         dialog.show();
-//        System.out.println("You win !");
         this.hasWon = true;
         this.gameOver = true;
     }
